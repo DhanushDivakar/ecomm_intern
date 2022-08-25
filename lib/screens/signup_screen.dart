@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -209,8 +209,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       controller: confirmPasswordEditingController,
       obscureText: true,
       validator: (value){
-        if(confirmPasswordEditingController.text.length > 6 && passwordEditingController.text != value){
-          return "Password Dose't match";
+        if(confirmPasswordEditingController.text != passwordEditingController.text ){
+          return "Password Doesn't match";
         }
         return null;
       },
@@ -312,7 +312,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
           signUp(emailEditingController.text, passwordEditingController.text);
-          
+
         },
         child: const Text(
           "SignUp",
